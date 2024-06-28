@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +14,21 @@
     <title>Welcome to MyWorld</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
+	<%-- <%=request.getContextPath() %> --%>
+    <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,.400italic,600italic,700italic" rel="stylesheet" type="text/css">
 	
 	<!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script>
-    $('.carousel').carousel({
-        interval: 2000 //changes the speed
-    })
-    </script>
+    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+
 	<style>
 	.abc {
 		position: sticky;
@@ -66,20 +64,40 @@
                 <ul class="nav navbar-nav">
                 	
                     <li>
-                        <a href="">HOME</a>
+                        <a href="${pageContext.request.contextPath }/index.jsp">HOME</a>
                     </li>
                     <li>
-                        <a href="">Member</a>
+                        <a href="${pageContext.request.contextPath }/member/member.jsp">Member</a>
                     </li>
                     <li>
                         <a href="">BOARD</a>
                     </li>
-                    <li>
-                        <a href="">LOGIN</a>
-                    </li>
-                    <li>
-                        <a href="" style="color:red">JOIN</a>
-                    </li>
+                    
+                    
+                    
+                   
+                    
+                    <c:choose>
+                   	<c:when test="${sessionScope.user_id == null }">
+                	    <li>
+                        	<a href="${pageContext.request.contextPath }/user/login.user">LOGIN</a>
+	                    </li>
+	                    <li>
+	                        <a href="${pageContext.request.contextPath }/user/join.user" style="color:red">JOIN</a>
+	                    </li>
+                   	</c:when> 
+                    <c:otherwise>
+	                    <li>
+	                        <a href="${pageContext.request.contextPath }/user/logout.user">LOGOUT</a>
+	                    </li>
+	                    <li>
+	                        <a href="${pageContext.request.contextPath }/user/mypage.user" style="color:red">MYPAGE</a>
+	                    </li>
+                    </c:otherwise>
+                    </c:choose>
+                    
+                    
+                    
                 </ul>
             </div>
             
