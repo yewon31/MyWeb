@@ -5,6 +5,17 @@
 
 <section>
 	
+	<!--
+		input태그에 많이 사용되는 주요 속성
+		
+		required는 공백을 허용하지 않음	
+		readonly는 값을 수정하지 못하고 읽기만 가능
+		disabled 태그를 사용하지 않음
+		checked 체크박스에서 미리선택
+		selected 셀렉트태그에서 미리선택
+	 -->
+	
+		
 	<div align="center">
 		
 		<h3>회원정보 관리</h3>
@@ -12,11 +23,14 @@
 		
 		<hr/>
 		
-		<form action="modifyForm.user" method="post">
+		
+		
+		
+		<form action="update.user" method="post">
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" placeholder="4글자 이상" readonly="readonly" value="${requestScope.dto.id }"></td>
+					<td><input type="text" name="id" placeholder="4글자 이상" value="${dto.id }" readonly="readonly"></td>
 				</tr>			
 				<tr>
 					<td>비밀번호</td>
@@ -24,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" placeholder="이름" required="required" value="${dto.name }"></td>
+					<td><input type="text" name="name" placeholder="이름" value="${dto.name }" required="required"></td>
 				</tr>			
 				<tr>
 					<td>이메일</td>
@@ -33,8 +47,8 @@
 				<tr>
 					<td>남? 여?</td>
 					<td>
-						<input type="radio" name="gender" value="M" checked="<c:if test="${dto.gender == 'M' }">checked</c:if>">남자
-						<input type="radio" name="gender" value="F" checked="${dto.gender == 'F' ? 'checked' : ''}">여자
+						<input type="radio" name="gender" value="M" ${dto.gender == 'M' ? 'checked' : '' } >남자
+						<input type="radio" name="gender" value="F" ${dto.gender == 'F' ? 'checked' : '' } >여자
 					</td>
 				</tr>			
 			

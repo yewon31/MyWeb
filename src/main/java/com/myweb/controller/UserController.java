@@ -81,22 +81,21 @@ public class UserController extends HttpServlet {
 			
 			response.sendRedirect( request.getContextPath()  + "/index.jsp" ); //메인화면으로
 			
+		} else if(command.equals("/user/update.user")) { //회원정보 수정
+		
+			service = new UserServiceImpl();
+			service.update(request, response);
+		
+		} else if(command.equals("/user/delete.user")) { //삭제화면
+			
+			//mvc2는 기본 이동이 forward
+			request.getRequestDispatcher("delete.jsp").forward(request, response);
+			
+		} else if(command.equals("/user/deleteForm.user")) { //탈퇴요청
+			
+			service = new UserServiceImpl();
+			service.delete(request, response);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-	
-	
 	
 }
