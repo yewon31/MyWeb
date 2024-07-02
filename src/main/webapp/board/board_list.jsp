@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 	
 	
 <%@ include file="../include/header.jsp" %>
@@ -26,8 +27,10 @@
 				<tr>
 					<td>${dto.bno }</td>
 					<td>${dto.writer }</td>
-					<td>${dto.title }</td>
-					<td>${dto.regdate }</td>
+					<td>
+						<a href="getContent.board?bno=${dto.bno }">${dto.title }</a>
+					</td>
+					<td><fmt:formatDate value="${dto.regdate }" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/></td>
 					<td>${dto.hit }</td>
 				</tr>
 				</c:forEach>
