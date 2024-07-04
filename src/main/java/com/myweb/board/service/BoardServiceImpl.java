@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.myweb.board.model.BoardDAO;
 import com.myweb.board.model.BoardDTO;
 import com.myweb.board.model.BoardMapper;
 import com.myweb.util.mybatis.MybatisUtil;
@@ -46,6 +47,7 @@ public class BoardServiceImpl implements BoardService {
 //
 //		//목록화면을 redirect 태워서 나감.
 //		response.sendRedirect("list.board");
+		
 	}
 
 	@Override
@@ -68,8 +70,11 @@ public class BoardServiceImpl implements BoardService {
 		//request저장 포워드
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("board_list.jsp").forward(request, response);
+		
+		
 	}
 
+	
 	@Override
 	public void getContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -88,7 +93,9 @@ public class BoardServiceImpl implements BoardService {
 		//dto를 request에 담고 forward 화면으로 이동
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_content.jsp").forward(request, response);
+		
 	}
+
 	
 	@Override
 	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -103,8 +110,10 @@ public class BoardServiceImpl implements BoardService {
 		//dto를 request에 담고 forward 화면으로 이동
 		request.setAttribute("dto", dto);
 		request.getRequestDispatcher("board_modify.jsp").forward(request, response);;
+		
 	}
 
+	
 	@Override
 	public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -137,7 +146,16 @@ public class BoardServiceImpl implements BoardService {
 			
 			//다시 수정화면으로
 			response.sendRedirect("getContent.board?bno=" + bno); //content는 bno를 필요로 함
+			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	
@@ -162,5 +180,16 @@ public class BoardServiceImpl implements BoardService {
 		
 		//화면이동
 		response.sendRedirect("list.board");
+		
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

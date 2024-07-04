@@ -32,7 +32,7 @@
 	</insert>
 	
 	<select id="getContent" resultType="com.myweb.board.model.BoardDTO">
-		SDFWSDFGWFG * FROM BOARD WHERE BNO = #{bno}
+		SELECT * FROM BOARD WHERE BNO = #{bno}
 	</select>
 	
 	<update id="update" parameterType="com.myweb.board.model.BoardDTO">
@@ -49,4 +49,5 @@
 	<update id="increaseHit" parameterType="string">
 		UPDATE BOARD SET HIT = HIT + 1 WHERE BNO = #{bno}
 	</update>
+
 </mapper>

@@ -54,20 +54,20 @@ public class BoardController extends HttpServlet {
 			
 		} else if(command.equals("/board/write.board") ) { //글 작성화면
 			
-			HttpSession session = request.getSession();
-			String user_id = (String)session.getAttribute("user_id");
-			
-			if(user_id == null) {
-				response.sendRedirect("/MyWeb/index.jsp");
-				return;
-			}
-			
-			
-			
+//			HttpSession session = request.getSession();
+//			String user_id = (String)session.getAttribute("user_id");
+//			
+//			if(user_id == null) {
+//				response.sendRedirect("/MyWeb/index.jsp");
+//				return;
+//			}
 			
 			request.getRequestDispatcher("board_write.jsp").forward(request, response);
 		
 		} else if(command.equals("/board/registForm.board") ) { //글 등록
+			
+
+			
 			
 			service = new BoardServiceImpl();
 			service.regist(request, response);
@@ -79,16 +79,22 @@ public class BoardController extends HttpServlet {
 			
 		} else if(command.equals("/board/modify.board")) { //수정 화면으로
 			
+
+			
 			service = new BoardServiceImpl();
 			service.modify(request, response);
 			
 			
 		} else if(command.equals("/board/updateForm.board")) { //글 수정
 			
+
+			
 			service = new BoardServiceImpl();
 			service.update(request, response);
 			
 		} else if(command.equals("/board/delete.board")) { //삭제 처리
+			
+
 			
 			service = new BoardServiceImpl();
 			service.delete(request, response);
